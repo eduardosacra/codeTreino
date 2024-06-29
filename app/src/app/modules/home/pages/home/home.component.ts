@@ -16,6 +16,6 @@ export class HomeComponent {
 
 
   roteandoParaExercicio(){
-    this.router.navigate([`/exercicio/1`]);
+    this.router.navigate([`/exercicio`]);
   }
 }

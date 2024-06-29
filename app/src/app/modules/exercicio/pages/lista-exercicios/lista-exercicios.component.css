@@ -1,0 +1,39 @@
+.cards-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.card {
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    width: 80%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.card:hover {
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.09);
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.card h2 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.card .difficulty, .card .category {
+    font-size: 0.9em;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+.card p {
+    color: #666;
+    margin-top: 10px;
+}

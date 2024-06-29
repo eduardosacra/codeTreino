@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IExercicio } from '../../shared/interfaces/exercicio.interface';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -586,4 +587,8 @@ export class ExercicioService {
   }
 
   constructor() { }
+
+  consultarDesafios(): Observable<IExercicio[]> {
+    return of(this.exercicios);
+  }
 }
