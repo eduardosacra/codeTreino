@@ -28,7 +28,6 @@ export class ListaExerciciosComponent implements OnInit {
   }
 
   navegarParaExercicio(exercicio: IExercicio) {
-    console.log(exercicio);
     this.router.navigate([`/exercicio/${exercicio.id}`]);    
   }
 }
