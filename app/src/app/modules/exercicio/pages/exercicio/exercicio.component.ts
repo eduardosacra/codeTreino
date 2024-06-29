@@ -20,7 +20,7 @@ export class ExercicioComponent implements OnInit {
   protected exibeInstrucoes = true;
   protected exibeCodigo = false;
 
-  protected percentualPontuacao: number = 0;
+  protected percentualPontuacao = 0;
   protected exception: string | undefined;
 
   constructor( private _exercicioService: ExercicioService,

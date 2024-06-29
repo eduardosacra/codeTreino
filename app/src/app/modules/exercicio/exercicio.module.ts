@@ -5,6 +5,7 @@ import { provideRouter } from '@angular/router';
 import { exercicioRoutes } from './exercicio.routes';
 import { SharedModule } from '../shared/shared.module';
 import { ExercicioComponent } from './pages/exercicio/exercicio.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -14,7 +15,8 @@ import { ExercicioComponent } from './pages/exercicio/exercicio.component';
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule
   ],
   providers: [
     ExercicioService,

@@ -12,7 +12,7 @@
   <div [class.hidden]="!exibeInstrucoes" id="card-instrucao" class="card">
     <div class="card-content">
       <h3 class="card-title">Instruções</h3>
-      <p class="card-text">{{exercicio?.enunciado}}</p>
+      <p class="card-text">{{exercicio?.descricao}}</p>
     </div>
   </div>
   <div [class.hidden]="!exibeCodigo" class="container-100 justify-content-between" style="height: 100%">
@@ -65,7 +65,7 @@
   }
   
   <div>    
-    @if(exercicio?.id != 1){
+    @if(exercicio?.id !== 1){
       <button class="button mr-3 ml-3" (click)="voltarQuestao()">Voltar</button>
     }
     <button class="button mr-3 ml-3" (click)="proximaQuestao()">Próxima</button>
