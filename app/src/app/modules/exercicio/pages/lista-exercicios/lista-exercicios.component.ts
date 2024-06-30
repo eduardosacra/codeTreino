@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './lista-exercicios.component.html',
-  styleUrl: './lista-exercicios.component.css',
+  styleUrl: './lista-exercicios.component.scss',
 })
 export class ListaExerciciosComponent implements OnInit {
 
