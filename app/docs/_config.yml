@@ -1,0 +1,36 @@
+title: Code treino
+email: eduardo.sacra.sousa@gmail.com
+description: >- # esta descrição aparecerá abaixo do seu nome em motores de busca.
+  Este é um blog de exemplo feito com Jekyll.
+baseurl: "codeTreino" # o subpath do seu site, e.g. /blog
+url: "https://eduardosacra.github.io/" # o URL base do seu site
+
+# Construir configurações
+markdown: kramdown
+theme: minima
+plugins:
+  - jekyll-feed
+
+# Excluir do processamento.
+# Os seguintes itens não serão processados, seja porque você não os usa
+# ou porque são gerados por outras fontes.
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+
+# Configurações de SEO
+author: Autor Eduardo
+github_username:  eduardosacra
+
+# Configurações de tema
+minima:
+  skin: air
+
+# Configurações de plugin
+jekyll-feed:
+  path: atom.xml
