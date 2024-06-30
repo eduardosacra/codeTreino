@@ -1,0 +1,110 @@
+/* Estilos do menu no topo da página */
+
+@import "../../../../app.component.scss";
+
+.hidden{
+  display: none;
+}
+
+body {
+  padding-top: 5rem; /* Altura do menu */
+}
+
+.top-menu {
+  background-color: #6A5ACD; /* Roxo */
+  padding: 1rem 0;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.top-menu-container {
+  // @extend .container;
+  margin: 0 auto;
+}
+
+.menu-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-item {
+  display: inline-block;
+  margin-left: 1rem;
+}
+
+.menu-link {
+  color: #fff; /* Branco */
+  text-decoration: none;
+  transition: color 0.3s ease, opacity 0.3s ease; /* Adicionando transição */
+  cursor: pointer; /* Alterando o cursor */
+}
+
+.menu-link:hover {
+  color: #D8BFD8; /* Lilás */
+  opacity: 0.8; /* Reduzindo a opacidade */
+}
+
+/* Conteúdo abaixo do menu */
+.content {
+  margin-top: 5rem; /* Altura do menu */
+}
+
+/* styles.scss */
+
+.card {
+  // @extend .ml-3;
+  // @extend .mr-3;
+  background-color: #fff; /* Branco */
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: auto;
+  width: 100%;
+  height: 100%;
+}
+
+.card-content {
+  padding: 1.5rem;
+}
+
+.card-title {
+  color: #6A5ACD; /* Roxo */
+  margin-top: 0;
+}
+
+.card-text {
+  color: #674d6e; /* Purple Haze */
+}
+
+
+/* styles.scss */
+
+/* Estilos da lista */
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list li {
+  // color: #BEAFC2; /* Purple Haze */
+  padding: 1rem 0;
+}
+
+/* Estilo da linha separadora */
+.list-divider {
+  border: none;
+  border-top: 1px solid rgba(201, 195, 238, 0.5); /* Roxo com opacidade reduzida */
+  margin: 1rem 0; /* Adicionando margem superior e inferior */
+  padding: 0;
+}
+
+.list-view-error{
+  color: #a82d2d;
+}
+.list-view-sucesso{
+  color: #2da84c;
+}
