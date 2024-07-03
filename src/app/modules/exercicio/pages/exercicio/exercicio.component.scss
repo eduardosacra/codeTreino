@@ -10,14 +10,36 @@ body {
   padding-top: 5rem; /* Altura do menu */
 }
 
+.container-principal {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  box-sizing: border-box;
+
+  .container-instrucoes {
+    width: 60%;
+  }
+
+  .container-inferior {
+    width: 30%;
+    margin-top: 50px;
+    height: 100%;
+
+  }
+
+
+}
+
+.navegacao {
+  // margin-top: 50px;
+}
+
+
+
 .top-menu {
   background-color: #6A5ACD; /* Roxo */
   padding: 1rem 0;
   width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
 }
 
 .top-menu-container {
