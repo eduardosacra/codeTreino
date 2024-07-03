@@ -79,8 +79,10 @@ export class ExercicioComponent implements OnInit {
 
   voltarQuestao(){
     let idExercicioAtual = this.exercicio?.id || 0;
-    idExercicioAtual = idExercicioAtual > 1 ? idExercicioAtual-- : idExercicioAtual;
-    this.router.navigate([`/exercicio/${idExercicioAtual}`]);
+    if(idExercicioAtual > 1) {
+      this.router.navigate([`/exercicio/${--idExercicioAtual}`]);
+    }
+
   }
 
   navegaParaIntrucoes(){
