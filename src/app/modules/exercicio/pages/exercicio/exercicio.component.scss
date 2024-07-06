@@ -11,17 +11,19 @@ body {
 }
 
 .container-principal {
-  width: 100%;
+  max-width: 1120px;
   display: flex;
   justify-content: space-evenly;
   box-sizing: border-box;
+  margin: auto;
+  flex-wrap: wrap;
 
   .container-instrucoes {
-    width: 60%;
+    width: 690px;
   }
 
   .container-inferior {
-    width: 30%;
+    width: 405px;
     margin-top: 50px;
     height: 100%;
 
@@ -30,8 +32,17 @@ body {
 
 }
 
+.container-esquerdo{
+
+}
+
+.bt-executar {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .navegacao {
-  // margin-top: 50px;
+  display: flex;
 }
 
 
@@ -85,7 +96,7 @@ body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow: auto;
   width: 100%;
-  height: 100%;
+  height: 428px;
 }
 
 .card-content {

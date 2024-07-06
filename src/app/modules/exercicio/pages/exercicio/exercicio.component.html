@@ -1,6 +1,4 @@
-
-
-<div class="container-principal" style="height: 428px;">
+<div class="container-principal">
   <div class="container-instrucoes">
     <div class="top-menu">
       <div class="top-menu-container">
@@ -10,67 +8,63 @@
         </ul>
       </div>
     </div>
-    <div [class.hidden]="!exibeInstrucoes" id="card-instrucao" class="card">
-      <div class="card-content">
-        <h3 class="card-title">Instruções</h3>
-        <p class="card-text">{{exercicio?.descricao}}</p>
-      </div>
-    </div>
-    <div [class.hidden]="!exibeCodigo" class="container-100 justify-content-between" style="height: 100%">
-      <div id="card-codigo" class="card">
+    <div class="container-esquerdo">
+      <div [class.hidden]="!exibeInstrucoes" id="card-instrucao" class="card">
         <div class="card-content">
-          <h3 class="card-title">Codigo</h3>
-          <app-code [exercicio]="exercicio" (resultados)="obterResultados($event)" (exception)="obterException($event)">
-          </app-code>
+          <h3 class="card-title">Instruções</h3>
+          <p class="card-text">{{exercicio?.descricao}}</p>
         </div>
       </div>
 
+      <div [class.hidden]="!exibeCodigo" class="conteiner-card-bt-executar">
+        <div id="card-codigo" class="card">
+          <div class="card-content">
+            <h3 class="card-title">Codigo</h3>
+            <app-code [exercicio]="exercicio" (resultados)="obterResultados($event)"
+              (exception)="obterException($event)">
+            </app-code>
+          </div>
+        </div>
+        <div class="bt-executar">
+          @if(exibeCodigo){
+          <button class="button-run ml-3 mr-3 mb-3" (click)="runCodigo()">Run Codigo</button>
+          }
 
-    </div>
-
-    <div class="navegacao">
-
-
-      <div>
-
-          <button class="button mr-3 ml-3" (click)="voltarQuestao()">Voltar</button>
-
-        <button class="button mr-3 ml-3" (click)="proximaQuestao()">Próxima</button>
-        @if(exibeCodigo){
-          <button class="button-run mr-3 ml-3" (click)="runCodigo()">Run Codigo</button>
-        }
-
+        </div>
       </div>
+
     </div>
+
+
   </div>
 
   <div class="container-inferior">
-    <div  id="card-display" class="card">
+    <div id="card-display" class="card">
       <div class="card-content">
         @if (resultadosRuntime) {
-          <ul class="list">
-            @for (runTime of resultadosRuntime; track $index){
-              @if(runTime.sucesso){
-                <li class="list-view-sucesso">
-                  <span>Sucesso :D</span>
-                  <br>
-                  Exemplo: {{runTime.run}}
-                  <br>
-                  Resultado: {{runTime.resultado}}
-                </li>
-              }
-              @else{
-                <li class="list-view-error">
-                  <span>Erro :(</span>
-                  <br>
-                  Exemplo: {{runTime.run}}
-                  <br>
-                  Resultado: {{runTime.resultado}}
-                </li>
-              }
-              <hr class="list-divider">
-            }
-          </ul>
+        <ul class="list">
+          @for (runTime of resultadosRuntime; track $index){
+          @if(runTime.sucesso){
+          <li class="list-view-sucesso">
+            <span>Sucesso :D</span>
+            <br>
+            Exemplo: {{runTime.run}}
+            <br>
+            Resultado: {{runTime.resultado}}
+          </li>
+          }
+          @else{
+          <li class="list-view-error">
+            <span>Erro :(</span>
+            <br>
+            Exemplo: {{runTime.run}}
+            <br>
+            Resultado: {{runTime.resultado}}
+          </li>
+          }
+          <hr class="list-divider">
+          }
+        </ul>
         }
 
         <div [class.hidden]="!exibeException" id="card-display" class="card">
@@ -81,10 +75,14 @@
 
       </div>
     </div>
+    <div class="navegacao">
+
+      <button class="button mr-3 ml-3 mb-3" (click)="voltarQuestao()">Voltar</button>
+
+      <button class="button mr-3 ml-3 mb-3" (click)="proximaQuestao()">Próxima</button>
+
+    </div>
   </div>
 
 
 </div>
-
-
-
