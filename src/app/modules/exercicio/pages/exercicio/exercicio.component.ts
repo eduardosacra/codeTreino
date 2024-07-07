@@ -55,9 +55,11 @@ export class ExercicioComponent implements OnInit {
   private _obterExercicio(idExercicio: string){
     if(idExercicio){
       this.exercicio = this._exercicioService.obterExemploPorId(Number(idExercicio))
+      if(!this.exercicio)
+        this.router.navigate([``]);
     }
     else {
-      console.log("404")
+      console.log("404");
     }
   }
 
@@ -73,16 +75,16 @@ export class ExercicioComponent implements OnInit {
 
   proximaQuestao(){
     let idExercicioAtual = this.exercicio?.id || 0;
-    idExercicioAtual++;
-    this.router.navigate([`/exercicio/${idExercicioAtual}`]);
+    let idProximoExercicio = this._exercicioService.obterProximoExercicio(idExercicioAtual)?.id || 0;
+    if(idProximoExercicio)
+      this.router.navigate([`/exercicio/${idProximoExercicio}`]);
   }
 
   voltarQuestao(){
     let idExercicioAtual = this.exercicio?.id || 0;
-    if(idExercicioAtual > 1) {
-      this.router.navigate([`/exercicio/${--idExercicioAtual}`]);
-    }
-
+    let idExercicioAnterior = this._exercicioService.obterExercicioAnterior(idExercicioAtual)?.id || 0;;
+    if(idExercicioAnterior)
+      this.router.navigate([`/exercicio/${idExercicioAnterior}`]);
   }
 
   navegaParaIntrucoes(){

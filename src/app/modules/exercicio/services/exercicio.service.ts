@@ -40,4 +40,21 @@ export class ExercicioService {
     }))
 
   }
+
+  obterExercicioAnterior(idExercicioAtual: number) {
+    let exercicios =  this.exerciciosSubject.getValue();
+    let index = exercicios.findIndex( exercicio => exercicio.id == idExercicioAtual);
+    if(index > 0){
+      return exercicios[index - 1];
+    }
+    return null;
+  }
+  obterProximoExercicio(idExercicioAtual: number) {
+    let exercicios =  this.exerciciosSubject.getValue();
+    let index = exercicios.findIndex( exercicio => exercicio.id == idExercicioAtual);
+    if(index < exercicios.length - 1){
+      return exercicios[index + 1];
+    }
+    return null;
+  }
 }
