@@ -5,8 +5,13 @@ import { ListaExerciciosComponent } from './pages/lista-exercicios/lista-exercic
 
 export const exercicioRoutes: Route[] = [
     {
-        path: ':idExercicio',
+        path: 'exercicio/:idExercicio',
         component: ExercicioComponent
+    },
+    {
+      path: 'exercicio',
+      redirectTo: '',
+      pathMatch: 'full'
     },
     {
         path: '',
