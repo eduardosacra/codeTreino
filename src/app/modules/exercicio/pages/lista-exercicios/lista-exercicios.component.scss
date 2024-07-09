@@ -6,15 +6,27 @@
 }
 
 .card {
-    background: #f4f4f4;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 20px;
-    max-width: 830px;
-    min-height: 105px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    text-align: left;
-    margin-bottom: 20px;
+  background: #f4f4f4;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  min-height: 105px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  margin-bottom: 20px;
+  width: 48%;
+}
+
+@media (max-width: 600px) {
+  .card {
+    width: 90%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .card {
+    width: 80%;
+  }
 }
 
 .card:hover {
