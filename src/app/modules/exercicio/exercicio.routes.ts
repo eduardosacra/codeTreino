@@ -11,6 +11,16 @@ export const exercicioRoutes: Route[] = [
     {
       path: 'exercicio/:idExercicio',
       component: ExercicioComponent
+    },
+    {
+      path: 'exercicio',
+      redirectTo: '',
+      pathMatch: 'full'
+    },
+    {
+      path: '**',
+      redirectTo: '',
+      pathMatch: 'full'
     }
 
 ];

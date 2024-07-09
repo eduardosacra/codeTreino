@@ -13,7 +13,6 @@ export const routes: Routes = [
     },
     {
       path: '**',
-      redirectTo: 'lista-exercicios',
-      pathMatch: 'full'
+      loadChildren: () => import('./modules/page-not-found/page-not-found.module').then( m=> m.PageNotFoundModule)
     }
 ];
