@@ -29,6 +29,6 @@ export class ListaExerciciosComponent implements OnInit {
   }
 
   navegarParaExercicio(exercicio: IExercicio) {
-    this.router.navigate([`/exercicio/${exercicio.id}`]);
+    this.router.navigate([`lista-exercicios/exercicio/${exercicio.id}`]);
   }
 }

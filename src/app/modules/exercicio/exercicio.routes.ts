@@ -5,16 +5,12 @@ import { ListaExerciciosComponent } from './pages/lista-exercicios/lista-exercic
 
 export const exercicioRoutes: Route[] = [
     {
-        path: 'exercicio/:idExercicio',
-        component: ExercicioComponent
+      path: '',
+      component: ListaExerciciosComponent
     },
     {
-      path: 'exercicio',
-      redirectTo: '',
-      pathMatch: 'full'
-    },
-    {
-        path: '',
-        component: ListaExerciciosComponent
+      path: 'exercicio/:idExercicio',
+      component: ExercicioComponent
     }
+
 ];

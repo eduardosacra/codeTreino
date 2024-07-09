@@ -60,6 +60,7 @@ export class ExercicioComponent implements OnInit {
     }
     else {
       console.log("404");
+      this.router.navigate([``]);
     }
   }
 
@@ -77,14 +78,14 @@ export class ExercicioComponent implements OnInit {
     let idExercicioAtual = this.exercicio?.id || 0;
     let idProximoExercicio = this._exercicioService.obterProximoExercicio(idExercicioAtual)?.id || 0;
     if(idProximoExercicio)
-      this.router.navigate([`/exercicio/${idProximoExercicio}`]);
+      this.router.navigate([`lista-exercicios/exercicio/${idProximoExercicio}`]);
   }
 
   voltarQuestao(){
     let idExercicioAtual = this.exercicio?.id || 0;
     let idExercicioAnterior = this._exercicioService.obterExercicioAnterior(idExercicioAtual)?.id || 0;;
     if(idExercicioAnterior)
-      this.router.navigate([`/exercicio/${idExercicioAnterior}`]);
+      this.router.navigate([`lista-exercicios/exercicio/${idExercicioAnterior}`]);
   }
 
   navegaParaIntrucoes(){

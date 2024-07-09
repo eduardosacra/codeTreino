@@ -1,13 +1,19 @@
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
+
     {
-        path: '',
+      path: '',
+      redirectTo: 'lista-exercicios',
+      pathMatch: 'full'
+    },
+    {
+        path: 'lista-exercicios',
         loadChildren: () => import('./modules/exercicio/exercicio.module').then( m=> m.ExercicioModule)
     },
     {
       path: '**',
-      redirectTo: '',
+      redirectTo: 'lista-exercicios',
       pathMatch: 'full'
     }
 ];
