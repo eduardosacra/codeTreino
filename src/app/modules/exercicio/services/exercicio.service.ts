@@ -10,6 +10,7 @@ import { IExercicio } from '../../shared/interfaces/exercicio.interface';
 export class ExercicioService {
 
   private exerciciosSubject = new BehaviorSubject<IExercicio[]>([]);
+  private exercicioSelcionadoSubject = new BehaviorSubject<IExercicio | null>(null);
 
   private exercicios: any[]  = [ { "id": 3, "titulo": "Cria uma funcao ehPalindromo", "descricao": "Desenvolva uma função chamada ehPalindromo que verifica se uma palavra ou frase é um palíndromo (ou seja, pode ser lida da mesma forma de trás para frente, desconsiderando espaços, pontuações e maiúsculas).", "nomeFuncao": "calculadora", "exemplos": [ { "saida": "8", "entrada": "(5, 3, '+')" }, { "saida": "2", "entrada": "(5, 3, '-')" }, { "saida": "15", "entrada": "(5, 3, '*')" }, { "saida": "1.6666666666666667", "entrada": "(5, 3, '/')" } ], "notas": "Lembre-se de tratar a divisão por zero retornando alguma mensagem apropriada.", "createdAt": "2024-06-18T21:23:00.955697+00:00", "nivelDificuldade": "fácil" }, { "id": 2, "titulo": "Cria uma calculadora", "descricao": "Crie uma função chamada calculadora que recebe dois números e uma operação aritmética (como +, -, *, /) e retorna o resultado dessa operação.", "nomeFuncao": "calculadora", "exemplos": [ { "saida": "8", "entrada": "(5, 3, '+')" }, { "saida": "2", "entrada": "(5, 3, '-')" }, { "saida": "15", "entrada": "(5, 3, '*')" }, { "saida": "1.6666666666666667", "entrada": "(5, 3, '/')" } ], "notas": "Lembre-se de tratar a divisão por zero retornando alguma mensagem apropriada.", "createdAt": "2024-06-11T11:56:29.652629+00:00", "nivelDificuldade": "fácil" }, { "id": 1, "titulo": "Cria uma calculadora", "descricao": "Crie uma função chamada calculadora que recebe dois números e uma operação aritmética (como +, -, *, /) e retorna o resultado dessa operação.", "nomeFuncao": "calculadora", "exemplos": [ { "saida": "8", "entrada": "(5, 3, '+')" }, { "saida": "2", "entrada": "(5, 3, '-')" }, { "saida": "15", "entrada": "(5, 3, '*')" }, { "saida": "1.6666666666666667", "entrada": "(5, 3, '/')" } ], "notas": "Lembre-se de tratar a divisão por zero retornando alguma mensagem apropriada.", "createdAt": "2024-06-11T11:56:13.353172+00:00", "nivelDificuldade": "fácil" } ]
 
@@ -44,17 +45,29 @@ export class ExercicioService {
   obterExercicioAnterior(idExercicioAtual: number) {
     let exercicios =  this.exerciciosSubject.getValue();
     let index = exercicios.findIndex( exercicio => exercicio.id == idExercicioAtual);
-    if(index > 0){
-      return exercicios[index - 1];
-    }
-    return null;
+    if(index > 0)
+      this.selecionarExercicio(exercicios[index - 1]);
+    else
+      this.limparExercicioSelecionado();
+
   }
   obterProximoExercicio(idExercicioAtual: number) {
     let exercicios =  this.exerciciosSubject.getValue();
     let index = exercicios.findIndex( exercicio => exercicio.id == idExercicioAtual);
-    if(index < exercicios.length - 1){
-      return exercicios[index + 1];
-    }
-    return null;
+    if(index < exercicios.length - 1)
+      this.selecionarExercicio(exercicios[index + 1]);
+    else
+      this.limparExercicioSelecionado();
+  }
+
+  obterExercicioSelecionado(): Observable<IExercicio | null> {
+    return this.exercicioSelcionadoSubject.asObservable();
+  }
+
+  selecionarExercicio(exercicio: IExercicio){
+    this.exercicioSelcionadoSubject.next(exercicio);
+  }
+  limparExercicioSelecionado(){
+    this.exercicioSelcionadoSubject.next(null);
   }
 }

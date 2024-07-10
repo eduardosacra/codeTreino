@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { IExercicio } from '../../../shared/interfaces/exercicio.interface';
 import { IRuntime } from '../../../shared/interfaces/runtime.interface';
 import { RunCodeService } from '../../../shared/services/run-code/run-code.service';
+import { Observable, of } from 'rxjs';
 // import { IRuntime } from 'src/app/modules/shared/interfaces/runtime.interface';
 // import { RunCodeService } from 'src/app/modules/shared/services/run-code/run-code.service';
 
@@ -13,6 +14,7 @@ import { RunCodeService } from '../../../shared/services/run-code/run-code.servi
   selector: 'app-exercicio',
   templateUrl: './exercicio.component.html',
   styleUrl: './exercicio.component.scss',
+  standalone: true,
 })
 export class ExercicioComponent implements OnInit {
   protected exercicio: IExercicio | undefined;
@@ -25,6 +27,7 @@ export class ExercicioComponent implements OnInit {
 
   protected percentualPontuacao = 0;
   protected exception: string | undefined;
+  exercicioSelecionado$: Observable<IExercicio | null> = of(null);
 
   constructor( private _exercicioService: ExercicioService,
     private route: ActivatedRoute,
@@ -49,7 +52,7 @@ export class ExercicioComponent implements OnInit {
     this.percentualPontuacao = 0;
     this.exception = undefined;
     this.resultadosRuntime = [];
-    this._obterExercicio(params.idExercicio);
+    // this._obterExercicio(params.idExercicio);
   }
 
   private _obterExercicio(idExercicio: string){

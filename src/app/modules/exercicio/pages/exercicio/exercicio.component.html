@@ -9,6 +9,8 @@
       </div>
     </div>
     <div class="container-esquerdo">
+      @if (exercicioSelecionado$ | async) {
+
       <div [class.hidden]="!exibeInstrucoes" id="card-instrucao" class="card">
         <div class="card-content">
           <h3 class="card-title">Instruções</h3>
@@ -32,6 +34,7 @@
 
         </div>
       </div>
+      }
 
     </div>
 
