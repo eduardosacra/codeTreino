@@ -6,12 +6,16 @@ import { exercicioRoutes } from './exercicio.routes';
 import { SharedModule } from '../shared/shared.module';
 import { ExercicioComponent } from './pages/exercicio/exercicio.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PaginaInicialComponent } from './pagina-inicial/pagina-inicial.component';
+import { ListaExerciciosComponent } from './pages/lista-exercicios/lista-exercicios.component';
 
 
 
 @NgModule({
   declarations: [
-    ExercicioComponent
+    ExercicioComponent,
+    ListaExerciciosComponent,
+    PaginaInicialComponent
   ],
   imports: [
     CommonModule,

@@ -1,6 +1,6 @@
-@if (exibirListaExercicios) {
-  <app-lista-exercicios></app-lista-exercicios>
-} @else {
+@if (exercicioSelecionado$ | async) {
   <app-exercicio></app-exercicio>
+} @else {
+  <app-lista-exercicios></app-lista-exercicios>
 }
 

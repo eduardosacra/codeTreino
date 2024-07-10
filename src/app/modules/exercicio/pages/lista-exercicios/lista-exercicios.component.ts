@@ -8,8 +8,6 @@ import { IExercicio } from '../../../shared/interfaces/exercicio.interface';
 
 @Component({
   selector: 'app-lista-exercicios',
-  standalone: true,
-  imports: [CommonModule],
   templateUrl: './lista-exercicios.component.html',
   styleUrl: './lista-exercicios.component.scss',
 })
@@ -29,6 +27,7 @@ export class ListaExerciciosComponent implements OnInit {
   }
 
   navegarParaExercicio(exercicio: IExercicio) {
-    this.router.navigate([`lista-exercicios/exercicio/${exercicio.id}`]);
+    this._exercicioService.selecionarExercicio(exercicio);
+    // this.router.navigate([`lista-exercicios/exercicio/${exercicio.id}`]);
   }
 }
