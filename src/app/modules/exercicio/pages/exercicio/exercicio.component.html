@@ -14,15 +14,13 @@
         <div class="card-content">
           <h3 class="card-title">Instruções</h3>
           <p class="card-text">{{exercicio?.descricao}}</p>
-          <h4 class="card-title" >Exemplos:</h4>
-          <ul class="list">
+          <h4>Exemplos:</h4>
+          <ul>
             @for (exemplo of exercicio?.exemplos; track $index){
-            <li class="list-view">
+            <li>
               <span class="mr-1">Entrada:</span>
               {{exemplo.entrada}}
-              <br>
               <span class="ml-4 mr-1">Saída:</span>
-              <br>
               {{exemplo.saida}}
             </li>
             <!-- <hr class="list-divider"> -->
