@@ -47,8 +47,8 @@ export class ExercicioService {
     let index = exercicios.findIndex( exercicio => exercicio.id == idExercicioAtual);
     if(index > 0)
       this.selecionarExercicio(exercicios[index - 1]);
-    else
-      this.limparExercicioSelecionado();
+    // else
+    //   this.limparExercicioSelecionado();
 
   }
   obterProximoExercicio(idExercicioAtual: number) {
@@ -56,8 +56,8 @@ export class ExercicioService {
     let index = exercicios.findIndex( exercicio => exercicio.id == idExercicioAtual);
     if(index < exercicios.length - 1)
       this.selecionarExercicio(exercicios[index + 1]);
-    else
-      this.limparExercicioSelecionado();
+    // else
+    //   this.limparExercicioSelecionado();
   }
 
   obterExercicioSelecionado(): Observable<IExercicio | null> {

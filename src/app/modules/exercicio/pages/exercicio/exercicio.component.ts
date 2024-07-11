@@ -89,17 +89,11 @@ export class ExercicioComponent implements OnInit, OnDestroy {
   proximaQuestao(){
     let idExercicioAtual = this.exercicio?.id || 0;
     this._exercicioService.obterProximoExercicio(idExercicioAtual);
-    // let idProximoExercicio = this._exercicioService.obterProximoExercicio(idExercicioAtual)?.id || 0;
-    // if(idProximoExercicio)
-      // this.router.navigate([`lista-exercicios/exercicio/${idProximoExercicio}`]);
   }
 
   voltarQuestao(){
     let idExercicioAtual = this.exercicio?.id || 0;
     this._exercicioService.obterExercicioAnterior(idExercicioAtual);
-    // let idExercicioAnterior = this._exercicioService.obterExercicioAnterior(idExercicioAtual)?.id || 0;;
-    // if(idExercicioAnterior)
-    //   this.router.navigate([`lista-exercicios/exercicio/${idExercicioAnterior}`]);
   }
 
   navegaParaIntrucoes(){
