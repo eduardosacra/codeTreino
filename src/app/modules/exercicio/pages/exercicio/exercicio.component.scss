@@ -43,6 +43,7 @@ body {
 
 .navegacao {
   display: flex;
+  justify-content: end;
 }
 
 
@@ -140,4 +141,10 @@ body {
 }
 .list-view-sucesso{
   color: #2da84c;
+}
+
+.list-view {
+  display: flex;
+    justify-content: flex-start;
+    align-items: end;
 }

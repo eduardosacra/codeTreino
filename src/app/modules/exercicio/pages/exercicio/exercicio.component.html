@@ -9,10 +9,27 @@
       </div>
     </div>
     <div class="container-esquerdo">
+
       <div [class.hidden]="!exibeInstrucoes" id="card-instrucao" class="card">
         <div class="card-content">
           <h3 class="card-title">Instruções</h3>
           <p class="card-text">{{exercicio?.descricao}}</p>
+          <h4>Exemplos:</h4>
+          <ul>
+            @for (exemplo of exercicio?.exemplos; track $index){
+            <li>
+              <span class="mr-1">Entrada:</span>
+              {{exemplo.entrada}}
+              <span class="ml-4 mr-1">Saída:</span>
+              {{exemplo.saida}}
+            </li>
+            <!-- <hr class="list-divider"> -->
+            }
+            </ul>
+          <h4>Notas:</h4>
+          <ul>
+            <li >{{exercicio?.notas }}</li>
+          </ul>
         </div>
       </div>
 
@@ -27,11 +44,12 @@
         </div>
         <div class="bt-executar">
           @if(exibeCodigo){
-          <button class="button-run ml-3 mr-3 mb-3" (click)="runCodigo()">Run Codigo</button>
+          <button class="button-run ml-3 mb-3" (click)="runCodigo()">Run Codigo</button>
           }
 
         </div>
       </div>
+
 
     </div>
 
@@ -79,7 +97,7 @@
 
       <button class="button mr-3 ml-3 mb-3" (click)="voltarQuestao()">Voltar</button>
 
-      <button class="button mr-3 ml-3 mb-3" (click)="proximaQuestao()">Próxima</button>
+      <button class="button ml-3 mb-3" (click)="proximaQuestao()">Próxima</button>
 
     </div>
   </div>

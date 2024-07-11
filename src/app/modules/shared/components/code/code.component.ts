@@ -13,9 +13,9 @@ import { RunCodeService } from '../../services/run-code/run-code.service';
 })
 export class CodeComponent implements AfterViewInit {
   @ViewChild('editor') editorCodigo!: ElementRef;
-  private editorViewCodeMirror: EditorView | undefined;
+  private editorViewCodeMirror: EditorView | null = null;
 
-  @Input() exercicio: IExercicio | undefined;
+  @Input() exercicio: IExercicio | null = null;
   @Output() resultados = new EventEmitter<IRuntime[]>();
   @Output() exception = new EventEmitter<string>();
 
@@ -24,11 +24,11 @@ export class CodeComponent implements AfterViewInit {
       this.runCodigo();
     })
   }
-  
-  
+
+
   ngAfterViewInit(): void {
     this._buildarCodeMirror();
-  } 
+  }
 
   private _buildarCodeMirror(){
     this.editorViewCodeMirror = new EditorView({
@@ -57,12 +57,12 @@ export class CodeComponent implements AfterViewInit {
           exception = error?.toString();
           break;
         }
-      } 
+      }
 
       if(exception) this.exception.emit(exception);
       else this.resultados.emit(runTime);
-      
-    } 
+
+    }
 
   }
 
