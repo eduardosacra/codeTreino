@@ -22,7 +22,7 @@ body {
     width: 690px;
   }
 
-  .container-inferior {
+  .container-execucao {
     width: 405px;
     margin-top: 50px;
     height: 100%;
@@ -44,6 +44,9 @@ body {
 .navegacao {
   display: flex;
   justify-content: end;
+  .esconder {
+    visibility: collapse;
+  }
 }
 
 

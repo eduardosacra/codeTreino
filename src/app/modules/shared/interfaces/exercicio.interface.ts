@@ -11,4 +11,6 @@ export interface IExercicio {
 
     created_at: Date;
     titulo: string;
+    exibirProximo: boolean;
+    exibirVoltar: boolean;
 }
