@@ -105,6 +105,14 @@ body {
 
 .card-content {
   padding: 1.5rem;
+
+  &__texto-explicativo {
+    color: #6A5ACD;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    margin-top: 30%;
+    text-align: justify;
+  }
 }
 
 .card-title {
