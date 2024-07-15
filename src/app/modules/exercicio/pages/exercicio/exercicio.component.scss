@@ -32,10 +32,6 @@ body {
 
 }
 
-.container-esquerdo{
-
-}
-
 .bt-executar {
   display: flex;
   justify-content: flex-end;
@@ -158,4 +154,22 @@ body {
   display: flex;
     justify-content: flex-start;
     align-items: end;
+}
+
+
+@media (max-width: 600px) {
+
+  .container-principal {
+    .container-instrucoes, .container-execucao {
+      width: 95%;
+    }
+  }
+}
+
+@media (min-width: 600px) and (max-width: 1024px) {
+  .container-principal {
+    .container-instrucoes, .container-execucao {
+      width: 70%;
+    }
+  }
 }
