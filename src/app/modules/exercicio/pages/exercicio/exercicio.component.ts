@@ -61,20 +61,7 @@ export class ExercicioComponent implements OnInit, OnDestroy {
     this.percentualPontuacao = 0;
     this.exception = undefined;
     this.resultadosRuntime = [];
-    // this._obterExercicio(params.idExercicio);
   }
-
-  // private _obterExercicio(idExercicio: string){
-  //   if(idExercicio){
-  //     this.exercicio = this._exercicioService.obterExemploPorId(Number(idExercicio))
-  //     if(!this.exercicio)
-  //       this.router.navigate([``]);
-  //   }
-  //   else {
-  //     console.log("404");
-  //     this.router.navigate([``]);
-  //   }
-  // }
 
   obterResultados(resultado: IRuntime[]){
     this.resultadosRuntime = resultado;
