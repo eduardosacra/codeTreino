@@ -107,6 +107,9 @@ export class ExercicioComponent implements OnInit, OnDestroy {
   }
 
   runCodigo(){
+    this.resultadosRuntime = [];
+    this.exibeException = false;
+    this.exception = "";
     this.runCodeService.emitRunCode();
   }
 
