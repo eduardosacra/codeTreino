@@ -38,9 +38,8 @@ export class CodeComponent implements AfterViewInit {
   }
 
   runCodigo(){
-    const content: string | undefined = this.editorViewCodeMirror?.state.doc.toString();
+    const content: string | undefined = this.editorViewCodeMirror?.state?.doc?.toString();
     let runTime: IRuntime[] = []
-    console.log(this.exercicio)
     if(content && this.exercicio){
       let exception: string | undefined;
       const nomeFuncao = this.exercicio.nomeFuncao;
@@ -51,7 +50,7 @@ export class CodeComponent implements AfterViewInit {
           runTime.push({
             run: nomeFuncao+exemplo.entrada,
             resultado: resultado,
-            sucesso: resultado.toString() == exemplo.saida
+            sucesso: resultado ? (resultado.toString() == exemplo.saida ) : false
           })
         } catch (error) {
           exception = error?.toString();
