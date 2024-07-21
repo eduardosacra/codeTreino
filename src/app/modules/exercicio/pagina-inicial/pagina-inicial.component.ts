@@ -23,6 +23,7 @@ export class PaginaInicialComponent implements OnInit {
   ngOnInit(): void {
     this.exercicioSelecionado$ = this.exercicioService.obterExercicioSelecionado();
     this.route.paramMap.subscribe(params => {
+      debugger;
       let token = params.get('token');
       alert(`Token ${token}`);
     });
