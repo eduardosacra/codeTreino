@@ -6,7 +6,7 @@ import { PaginaInicialComponent } from './pagina-inicial/pagina-inicial.componen
 
 export const exercicioRoutes: Route[] = [
     {
-      path: ':email',
+      path: ':token',
       component: PaginaInicialComponent
     },
     {

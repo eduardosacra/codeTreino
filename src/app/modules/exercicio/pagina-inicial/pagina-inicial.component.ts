@@ -22,9 +22,9 @@ export class PaginaInicialComponent implements OnInit {
 
   ngOnInit(): void {
     this.exercicioSelecionado$ = this.exercicioService.obterExercicioSelecionado();
-    this.route.queryParamMap.subscribe(params => {
-      let email = params.get('email');
-      alert(`Email ${email}`);
+    this.route.paramMap.subscribe(params => {
+      let token = params.get('token');
+      alert(`Token ${token}`);
     });
   }
 
