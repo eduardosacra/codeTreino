@@ -6,14 +6,12 @@ import { PaginaInicialComponent } from './pagina-inicial/pagina-inicial.componen
 
 export const exercicioRoutes: Route[] = [
     {
+      path: ':email',
+      component: PaginaInicialComponent
+    },
+    {
       path: '',
       component: PaginaInicialComponent
     }
-    // ,
-    // {
-    //   path: '**',
-    //   redirectTo: '',
-    //   pathMatch: 'full'
-    // }
 
 ];
