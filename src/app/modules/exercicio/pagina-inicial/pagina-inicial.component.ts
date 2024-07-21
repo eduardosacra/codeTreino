@@ -25,7 +25,8 @@ export class PaginaInicialComponent implements OnInit {
     this.route.queryParamMap.subscribe(params => {
       debugger;
       let token = params.get('token');
-      alert(`Token ${token}`);
+      alert(`Token:  ${token}`);
+
     });
   }
 
