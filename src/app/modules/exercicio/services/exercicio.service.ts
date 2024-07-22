@@ -49,6 +49,24 @@ export class ExercicioService {
 
   }
 
+
+  registrarResultado(idCliente: any, idExercicio: number, sucesso: boolean) {
+    let body = {
+      id_cliente: idCliente,
+      id_desafio: idExercicio,
+      sucesso: sucesso
+    }
+    return this.http.post('https://xnehkhimqjsgufnryize.supabase.co/rest/v1/desafios_finalizados', body,
+      {headers: {
+        apikey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhuZWhraGltcWpzZ3VmbnJ5aXplIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTgwNTE0ODUsImV4cCI6MjAzMzYyNzQ4NX0.Int6HvQpxACneAwwfkgbZrDcARj50LUxzfdclg35wJQ',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhuZWhraGltcWpzZ3VmbnJ5aXplIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTgwNTE0ODUsImV4cCI6MjAzMzYyNzQ4NX0.Int6HvQpxACneAwwfkgbZrDcARj50LUxzfdclg35wJQ',
+        accept: '*/*',
+        contentType: 'application/json',
+        prefer: 'return=minimal'
+      }}
+    )
+  }
+
   obterExercicioAnterior(idExercicioAtual: number) {
     let exercicios =  this.exerciciosSubject.getValue();
     let index = exercicios.findIndex( exercicio => exercicio.id == idExercicioAtual);

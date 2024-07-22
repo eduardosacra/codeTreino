@@ -7,6 +7,7 @@ import { IExercicio } from '../../../shared/interfaces/exercicio.interface';
 import { IRuntime } from '../../../shared/interfaces/runtime.interface';
 import { RunCodeService } from '../../../shared/services/run-code/run-code.service';
 import { combineLatest, Observable, of, Subscription } from 'rxjs';
+import { StorageService } from '../../../shared/storage.service';
 // import { IRuntime } from 'src/app/modules/shared/interfaces/runtime.interface';
 // import { RunCodeService } from 'src/app/modules/shared/services/run-code/run-code.service';
 
@@ -27,14 +28,17 @@ export class ExercicioComponent implements OnInit, OnDestroy {
   protected percentualPontuacao = 0;
   protected exception: string | undefined;
   protected subScriptionExSelcionado: any = null;
+  private registroSubscription: Subscription | undefined;
 
-  constructor( private _exercicioService: ExercicioService,
+  constructor( private exercicioService: ExercicioService,
     private route: ActivatedRoute,
     private router: Router,
-    private runCodeService: RunCodeService
+    private runCodeService: RunCodeService,
+    private storageService: StorageService
   ){}
   ngOnDestroy(): void {
     if(this.subScriptionExSelcionado) this.subScriptionExSelcionado.unsubscribe();
+    if(this.registroSubscription) this.registroSubscription.unsubscribe();
   }
 
   ngOnInit(): void {
@@ -42,9 +46,9 @@ export class ExercicioComponent implements OnInit, OnDestroy {
     //   this._reinicializaPagina(params);
 
     // });
-    this._exercicioService.obterExercicioSelecionado()
+    this.exercicioService.obterExercicioSelecionado()
 
-   this.subScriptionExSelcionado = combineLatest([this._exercicioService.obterExercicioSelecionado()])
+   this.subScriptionExSelcionado = combineLatest([this.exercicioService.obterExercicioSelecionado()])
     .subscribe(([exercicio]) => {
       this.exercicio = exercicio;
       this._reinicializaPagina();
@@ -66,21 +70,34 @@ export class ExercicioComponent implements OnInit, OnDestroy {
   obterResultados(resultado: IRuntime[]){
     this.resultadosRuntime = resultado;
     this.exibePontuacao = true;
+    this.registrarResultado(true);
   }
 
   obterException(exception: string){
     this.exception = exception;
     this.exibeException = true;
+    this.registrarResultado(false);
+  }
+
+  registrarResultado(sucesso: boolean) {
+    let idCliente = this.storageService.getIdCliente();
+
+    if(this.exercicio?.id)
+    this.registroSubscription = this.exercicioService.registrarResultado(idCliente, this.exercicio?.id ?? 0, sucesso)
+    .subscribe((result) => {
+      console.log('Resultado registrado com sucesso');
+    }, (error) => { console.log('Erro ao registrar resultado', error) });
+
   }
 
   proximaQuestao(){
     let idExercicioAtual = this.exercicio?.id || 0;
-    this._exercicioService.obterProximoExercicio(idExercicioAtual);
+    this.exercicioService.obterProximoExercicio(idExercicioAtual);
   }
 
   voltarQuestao(){
     let idExercicioAtual = this.exercicio?.id || 0;
-    this._exercicioService.obterExercicioAnterior(idExercicioAtual);
+    this.exercicioService.obterExercicioAnterior(idExercicioAtual);
   }
 
   navegaParaIntrucoes(){
