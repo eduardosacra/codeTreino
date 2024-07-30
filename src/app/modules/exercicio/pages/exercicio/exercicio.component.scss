@@ -48,7 +48,7 @@ body {
 
 
 .top-menu {
-  background-color: #6A5ACD; /* Roxo */
+  background-color: $cor-principal;
   padding: 1rem 0;
   width: 100%;
 }
@@ -103,7 +103,7 @@ body {
   padding: 1.5rem;
 
   &__texto-explicativo {
-    color: #6A5ACD;
+    color: $cor-principal;
     font-size: 1.5rem;
     margin-bottom: 1rem;
     margin-top: 30%;
@@ -112,12 +112,12 @@ body {
 }
 
 .card-title {
-  color: #6A5ACD; /* Roxo */
+  color: $cor-principal;
   margin-top: 0;
 }
 
 .card-text {
-  color: #674d6e; /* Purple Haze */
+  color: #000000;
 }
 
 
