@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --configuration production --base-href /codeTreino/",
+    "build": "ng build --configuration production --base-href /codeTreino/ --output-path=dist/code-treino-v3/browser --deploy-url /codeTreino/ ",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
