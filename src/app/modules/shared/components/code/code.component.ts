@@ -50,7 +50,7 @@ export class CodeComponent implements AfterViewInit {
           runTime.push({
             run: nomeFuncao+exemplo.entrada,
             resultado: resultado,
-            sucesso: resultado ? (resultado.toString() == exemplo.saida ) : false
+            sucesso: resultado ? resultado.toString() == exemplo.saida : resultado == exemplo.saida
           })
         } catch (error) {
           exception = error?.toString();
