@@ -10,16 +10,16 @@ export const exercicioRoutes: Route[] = [
       component: ExercicioComponent
     },
     {
-      path: 'exercicios/:id',
+      path: 'listaexercicios/:id',
       component: ListaExerciciosComponent
     },
     {
-      path: 'exercicios',
+      path: 'listaexercicios',
       component: ListaExerciciosComponent
     },
     {
       path: '',
-      redirectTo: 'exercicios',
+      redirectTo: 'listaexercicios',
       pathMatch: 'full'
     }
 
