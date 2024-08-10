@@ -49,6 +49,10 @@ export class ExercicioService {
 
   }
 
+  recuperarListaExercicios(): Observable<IExercicio[]> {
+    return this.exerciciosSubject.asObservable();
+  }
+
 
   registrarResultado(idCliente: any, idExercicio: number, sucesso: boolean) {
     let body = {
@@ -74,9 +78,9 @@ export class ExercicioService {
       let exercicio = exercicios[index - 1];
       exercicio.exibirVoltar = this.exibirbtnVoltar(exercicio.id);
       this.selecionarExercicio(exercicio);
+      return exercicio;
     }
-    // else
-    //   this.limparExercicioSelecionado();
+    return null;
 
   }
   obterProximoExercicio(idExercicioAtual: number) {
@@ -86,10 +90,10 @@ export class ExercicioService {
       let exercicio = exercicios[index + 1];
       exercicio.exibirProximo = this.exibirbtnProximo(exercicio.id);
       this.selecionarExercicio(exercicio);
+      return exercicio;
     }
+    return null;
 
-    // else
-    //   this.limparExercicioSelecionado();
   }
 
   obterExercicioSelecionado(): Observable<IExercicio | null> {

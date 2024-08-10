@@ -6,12 +6,21 @@ import { PaginaInicialComponent } from './pagina-inicial/pagina-inicial.componen
 
 export const exercicioRoutes: Route[] = [
     {
-      path: ':id',
-      component: PaginaInicialComponent
+      path: 'exercicios/:idExercicio',
+      component: ExercicioComponent
+    },
+    {
+      path: 'exercicios/:id',
+      component: ListaExerciciosComponent
+    },
+    {
+      path: 'exercicios',
+      component: ListaExerciciosComponent
     },
     {
       path: '',
-      component: PaginaInicialComponent
+      redirectTo: 'exercicios',
+      pathMatch: 'full'
     }
 
 ];

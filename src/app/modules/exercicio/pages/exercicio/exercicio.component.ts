@@ -29,6 +29,7 @@ export class ExercicioComponent implements OnInit, OnDestroy {
   protected exception: string | undefined;
   protected subScriptionExSelcionado: any = null;
   private registroSubscription: Subscription | undefined;
+  private exerciciosSubscription: Subscription | undefined;
 
   constructor( private exercicioService: ExercicioService,
     private route: ActivatedRoute,
@@ -39,17 +40,26 @@ export class ExercicioComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     if(this.subScriptionExSelcionado) this.subScriptionExSelcionado.unsubscribe();
     if(this.registroSubscription) this.registroSubscription.unsubscribe();
+    if(this.exerciciosSubscription) this.exerciciosSubscription.unsubscribe();
   }
 
   ngOnInit(): void {
-    // this.route.params.subscribe((params: any) => {
-    //   this._reinicializaPagina(params);
 
-    // });
-    this.exercicioService.obterExercicioSelecionado()
+   this.subScriptionExSelcionado = combineLatest([this.exercicioService.obterExercicioSelecionado(), this.route.paramMap])
+    .subscribe(([exercicio, parametros]) => {
 
-   this.subScriptionExSelcionado = combineLatest([this.exercicioService.obterExercicioSelecionado()])
-    .subscribe(([exercicio]) => {
+      // Se não houver exercício, busca o exercício pelo id.
+      if(!exercicio) {
+        let idExercicio = Number(parametros.get('idExercicio'));
+
+        this.exerciciosSubscription = this.exercicioService.consultarDesafios().subscribe((exercicios) => {
+          let exLocalizado =  exercicios.find((ex) => ex.id === idExercicio);
+
+          if(exLocalizado) this.exercicioService.selecionarExercicio(exLocalizado);
+
+        });
+      }
+
       this.exercicio = exercicio;
       this._reinicializaPagina();
     });
@@ -92,12 +102,14 @@ export class ExercicioComponent implements OnInit, OnDestroy {
 
   proximaQuestao(){
     let idExercicioAtual = this.exercicio?.id || 0;
-    this.exercicioService.obterProximoExercicio(idExercicioAtual);
+    let proximoExercicio = this.exercicioService.obterProximoExercicio(idExercicioAtual);
+    this.router.navigate([`exercicios/${proximoExercicio?.id ?? ''}`]);
   }
 
   voltarQuestao(){
     let idExercicioAtual = this.exercicio?.id || 0;
-    this.exercicioService.obterExercicioAnterior(idExercicioAtual);
+    let proximoExercicio = this.exercicioService.obterExercicioAnterior(idExercicioAtual);
+    this.router.navigate([`exercicios/${proximoExercicio?.id ?? ''}`]);
   }
 
   navegaParaIntrucoes(){
