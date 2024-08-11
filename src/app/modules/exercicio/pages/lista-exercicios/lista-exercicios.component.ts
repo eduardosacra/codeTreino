@@ -36,6 +36,6 @@ export class ListaExerciciosComponent implements OnInit {
 
   navegarParaExercicio(exercicio: IExercicio) {
     this._exercicioService.selecionarExercicio(exercicio);
-    this.router.navigate([`exercicios/${exercicio.id}`]);
+    this.router.navigate([`${exercicio.id}`]);
   }
 }
