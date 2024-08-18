@@ -1,17 +1,18 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, ViewChild, WritableSignal, signal } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnDestroy, Output, ViewChild, WritableSignal, signal } from '@angular/core';
 import { EditorView , minimalSetup, basicSetup} from 'codemirror';
 import { javascript } from "@codemirror/lang-javascript"
 import { IExercicio } from '../../interfaces/exercicio.interface';
 import { IRuntime } from '../../interfaces/runtime.interface';
 import { RunCodeService } from '../../services/run-code/run-code.service';
-
+import { Subscription } from 'rxjs';
+import { EditorState } from '@codemirror/state';
 
 @Component({
   selector: 'app-code',
   templateUrl: './code.component.html',
   styleUrl: './code.component.scss',
 })
-export class CodeComponent implements AfterViewInit {
+export class CodeComponent implements AfterViewInit, OnDestroy {
   @ViewChild('editor') editorCodigo!: ElementRef;
   private editorViewCodeMirror: EditorView | null = null;
 
@@ -19,10 +20,26 @@ export class CodeComponent implements AfterViewInit {
   @Output() resultados = new EventEmitter<IRuntime[]>();
   @Output() exception = new EventEmitter<string>();
 
+  private runCondeSubscription: Subscription;
+  private cleanRunCodeSubscription: Subscription;
+
   constructor(private runCodeService: RunCodeService){
-    runCodeService.runCodeObs.subscribe( ()=>{
+    this.runCondeSubscription = runCodeService.runCodeObs.subscribe( ()=>{
       this.runCodigo();
     })
+    this.cleanRunCodeSubscription = runCodeService.cleanRunCodeObs.subscribe( ()=>{
+      if (this.editorViewCodeMirror) {
+        this.editorViewCodeMirror.dispatch({
+          changes: { from: 0, to: this.editorViewCodeMirror.state.doc.length, insert: '' }
+        });
+      }
+
+    });
+  }
+
+  ngOnDestroy(): void {
+    if(this.runCondeSubscription) this.runCondeSubscription.unsubscribe();
+    if(this.cleanRunCodeSubscription) this.cleanRunCodeSubscription.unsubscribe();
   }
 
 

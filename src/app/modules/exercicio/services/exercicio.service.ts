@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable, of, switchMap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { IExercicio } from '../../shared/interfaces/exercicio.interface';
+import { RunCodeService } from '../../shared/services/run-code/run-code.service';
 // import { IExercicio } from 'src/app/modules/shared/interfaces/exercicio.interface';
 
 @Injectable({
@@ -22,7 +23,7 @@ export class ExercicioService {
     return exercicios.find( exercicio => exercicio.id == id);
   }
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private runCodeServe: RunCodeService) {}
 
   consultarDesafios(): Observable<IExercicio[]> {
 
@@ -74,6 +75,7 @@ export class ExercicioService {
       let exercicio = exercicios[index - 1];
       exercicio.exibirVoltar = this.exibirbtnVoltar(exercicio.id);
       this.selecionarExercicio(exercicio);
+      this.limparEditor();
     }
     // else
     //   this.limparExercicioSelecionado();
@@ -86,6 +88,7 @@ export class ExercicioService {
       let exercicio = exercicios[index + 1];
       exercicio.exibirProximo = this.exibirbtnProximo(exercicio.id);
       this.selecionarExercicio(exercicio);
+      this.limparEditor();
     }
 
     // else
@@ -100,6 +103,9 @@ export class ExercicioService {
     exercicio.exibirProximo = this.exibirbtnProximo(exercicio.id);
     exercicio.exibirVoltar = this.exibirbtnVoltar(exercicio.id);
     this.exercicioSelcionadoSubject.next(exercicio);
+  }
+  limparEditor() {
+    this.runCodeServe.limparRunCode();
   }
   limparExercicioSelecionado(){
     this.exercicioSelcionadoSubject.next(null);
